@@ -15,6 +15,11 @@ std::map<std::string, std::function<int(std::vector<int> &)>> sorts{
     {"binaryInsertSort", binaryInsertSort},
     {"countSort", countSort},
     {"radixSort", radixSort},
+    {"mergeSort", mergeSort},
+    {"quickSort", quickSort},
+    {"heapSort", heapSort},
+    {"shellShellSort", shellShellSort},
+    {"shellCiurSort", shellCiurSort},
 };
 
 int main(int argc, char *argv[])

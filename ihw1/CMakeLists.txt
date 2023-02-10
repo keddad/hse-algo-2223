@@ -8,6 +8,10 @@ add_library(sorts STATIC
     sorts/insertSort.cpp
     sorts/countSort.cpp
     sorts/radixSort.cpp
+    sorts/mergeSort.cpp
+    sorts/quickSort.cpp
+    sorts/heapSort.cpp
+    sorts/shellSort.cpp
 )
 
 add_executable(main main.cpp)
