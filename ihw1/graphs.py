@@ -56,7 +56,7 @@ for total_array_size in df["total_array_size"].unique():
 for sort_type in df["sort"].unique():
     for data_type in ["time_ns", "operations"]:
         fig, ax = plt.subplots(nrows=1, ncols=1)
-        ax.set_title(f"{sort} - {data_type}")
+        ax.set_title(f"{sort_type} - {data_type}")
         ax.set_xlabel("Array size")
         ax.set_ylabel(data_type)
 
