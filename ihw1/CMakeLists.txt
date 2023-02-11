@@ -14,6 +14,13 @@ add_library(sorts STATIC
     sorts/shellSort.cpp
 )
 
-add_executable(main main.cpp)
+add_library(perf STATIC
+    perf/perf.cpp
+    perf/gen.cpp
+)
 
-target_link_libraries(main sorts)
+add_executable(main 
+    main.cpp
+)
+
+target_link_libraries(main sorts perf)

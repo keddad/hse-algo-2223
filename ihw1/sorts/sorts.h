@@ -13,5 +13,3 @@ int quickSort(std::vector<int>& v);
 int heapSort(std::vector<int>& v);
 int shellCiurSort(std::vector<int>& v);
 int shellShellSort(std::vector<int>& v);
-
-

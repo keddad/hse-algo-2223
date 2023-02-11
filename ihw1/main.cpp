@@ -5,6 +5,8 @@
 #include <vector>
 
 #include "sorts/sorts.h"
+#include "perf/perf.h"
+#include "perf/gen.h"
 
 std::map<std::string, std::function<int(std::vector<int> &)>> sorts{
     {"selectionSort", selectionSort},
@@ -22,24 +24,31 @@ std::map<std::string, std::function<int(std::vector<int> &)>> sorts{
     {"shellCiurSort", shellCiurSort},
 };
 
+std::map<std::string, std::vector<int>> sizes_list{
+    {"smallSizes", smallSizes()},
+    {"bigSizes", bigSizes()},
+};
+
 int main(int argc, char *argv[])
 {
-    if (sorts.find(argv[1]) == sorts.end())
-    {
-        std::cerr << "No such sort!\n";
-        return 1;
+    std::map<std::string, std::vector<int>> arrays {
+        {"random0_5", getRandom(4101, 0, 5)},
+        {"random0_4000", getRandom(4101, 0, 4000)},
+        {"almost0_4000", getAlmosrtSorted(4101, 0, 4000)},
+        {"reverse4100_1", getReverseSorted(4101, 1, 4100)},
+    };
+
+    for(auto sort : sorts) {
+        for (auto array : arrays) {
+            for (auto sizes : sizes_list) {
+                std::cout << "Processing " << sort.first << " " << array.first << " " << sizes.first << std::endl;
+
+                
+            }
+        }
     }
 
-    auto sort_function = sorts[argv[1]];
+    
 
-    std::vector<int> v = {4, 2, 1, 2, 3, 6, 5, 4, 19, 0};
-    int op = sort_function(v);
-
-    for (size_t i = 0; i < v.size(); i++)
-    {
-        std::cout << v[i] << " ";
-    }
-
-    std::cout << "\n"
-              << op << "\n";
+    return 0;
 }
