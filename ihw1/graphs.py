@@ -8,11 +8,6 @@ import pandas as pd
 df = pd.DataFrame(columns=["sort", "total_array_size",
                   "array_type", "size", "time_ns", "operations"])
 
-
-def take_n(data, n):
-    return data[::len(data)//n]
-
-
 def read_csv(csv_path: Path):
     global df
 
@@ -51,4 +46,30 @@ for total_array_size in df["total_array_size"].unique():
                 ax.plot(sort_data["size"], sort_data[data_type], label=sort)
 
             ax.legend()
+            # to include in markdown
+            print(f"![](graphs/arrays_{array_type}_{total_array_size}_{data_type}.png)")
             fig.savefig(graphs / f"arrays_{array_type}_{total_array_size}_{data_type}.png")
+            plt.close(fig)
+
+# Sort plots
+
+for sort_type in df["sort"].unique():
+    for data_type in ["time_ns", "operations"]:
+        fig, ax = plt.subplots(nrows=1, ncols=1)
+        ax.set_title(f"{sort} - {data_type}")
+        ax.set_xlabel("Array size")
+        ax.set_ylabel(data_type)
+
+        for array_type in df["array_type"].unique():
+            for total_array_size in df["total_array_size"].unique():
+                sort_data = df.query(
+                    "total_array_size == @total_array_size & array_type == @array_type & sort == @sort")[["size", data_type]]
+
+                ax.plot(sort_data["size"], sort_data[data_type], label=f"{array_type}_{total_array_size}")
+
+        ax.legend()
+        print(f"![](graphs/sorts_{sort_type}_{data_type}.png)")
+        fig.savefig(graphs / f"sorts_{sort_type}_{data_type}.png")
+        plt.close(fig)
+
+df.to_csv("aggregate_data.csv")
