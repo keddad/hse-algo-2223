@@ -33,10 +33,10 @@ std::map<std::string, std::vector<int>> sizes_list{
 int main(int argc, char *argv[])
 {
     std::map<std::string, std::vector<int>> arrays {
-        {"random0_5", getRandom(4101, 0, 5)},
-        {"random0_4000", getRandom(4101, 0, 4000)},
-        {"almost0_4000", getAlmosrtSorted(4101, 0, 4000)},
-        {"reverse4100_1", getReverseSorted(4101, 1, 4100)},
+        {"random0-5", getRandom(4101, 0, 5)},
+        {"random0-4000", getRandom(4101, 0, 4000)},
+        {"almost0-4000", getAlmosrtSorted(4101, 0, 4000)},
+        {"reverse4100-1", getReverseSorted(4101, 1, 4100)},
     };
 
     std::string data_path = argv[1];
