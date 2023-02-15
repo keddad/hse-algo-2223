@@ -63,7 +63,7 @@ for sort_type in df["sort"].unique():
         for array_type in df["array_type"].unique():
             for total_array_size in df["total_array_size"].unique():
                 sort_data = df.query(
-                    "total_array_size == @total_array_size & array_type == @array_type & sort == @sort")[["size", data_type]]
+                    "total_array_size == @total_array_size & array_type == @array_type & sort == @sort_type")[["size", data_type]]
 
                 ax.plot(sort_data["size"], sort_data[data_type], label=f"{array_type}_{total_array_size}")
 
