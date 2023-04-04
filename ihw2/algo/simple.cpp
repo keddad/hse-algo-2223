@@ -2,7 +2,7 @@
 
 #include "algo.h"
 
-std::size_t simple(std::vector<char>& text, std::vector<char>& substr,
+std::size_t simple(std::vector<char>& text, std::vector<char>& substr, const std::vector<char>& alphabet,
                    std::size_t& oper) {
 
   for (std::size_t start_point = 0; start_point < text.size() - substr.size(); ++start_point) {
